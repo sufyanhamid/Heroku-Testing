@@ -9,5 +9,5 @@ HEADERS = ({'User-Agent':
 
 URL_2 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=Program 3 New Coin Arrived at Coin Gecko'
 
-# requests.get(URL_2)#, headers=HEADERS)
-# print(URL_2)
+requests.get(URL_2)#, headers=HEADERS)
+print(URL_2)

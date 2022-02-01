@@ -10,7 +10,7 @@ while A==0:
     if Count==0:
 
         URL_1='https://coinmarketcap.com/new/'
-        webpage1 = requests.get(URL_1, headers=HEADERS)
+        webpage1 = requests.get(URL_1)
         soup1 = BeautifulSoup(webpage1.content, "html.parser")
         Coin_MarkerCap = etree.HTML(str(soup1))
 

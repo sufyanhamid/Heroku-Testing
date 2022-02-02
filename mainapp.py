@@ -13,7 +13,7 @@ import random
 
 
 scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("D:/Projects/sufyanpython-1f042e1fc067.json",scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("sufyanpython-1f042e1fc067.json",scope)
 client = gspread.authorize(creds)
 
 while True:

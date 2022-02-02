@@ -26,7 +26,7 @@ HEADERS = ({'User-Agent':
             'Accept-Language': 'en-US, en;q=0.5'})
 
 
-for i in range(0,2):
+while True:
     
     Count=0
     if Count==0:
@@ -54,7 +54,10 @@ for i in range(0,2):
             My_Sheet(0,Temp_List_1)
 #             Temp_File_1=pd.DataFrame(Temp_List_1).to_csv('./Desktop/New_List_1.csv',index=False)
             for i in range(0, len(main_list_1)):
-                print(main_list_1[i])
+                url1 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=Program 2 New Coin Arrived at Coin Gecko\n'+str(main_list_1[i])
+                requests.get(url1)
+                sleep(2)
+
         
     Count+=1
     
@@ -84,19 +87,12 @@ for i in range(0,2):
         if main_list:
             My_Sheet(1,Temp_List)
             for i in range(0, len(main_list)):
-                print(main_list[i])
-#                 proxy = Random_Proxy()
-                
-#                 url1 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=Program 2 New Coin Arrived at Coin Gecko\n'+str(main_list[i])
-#                 #url2 = 'https://api.telegram.org/bot5239619966:AAGoZ1maO870KNAbgt9olsC53eVNF0gv_AU/sendMessage?chat_id=256007064&parse_mode=MarkdownV2&&text=New Coin Arrived at Coin Gecko\n'+str(main_list[i])
-#                 request_type = "get"
+                url1 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=Program 2 New Coin Arrived at Coin Gecko\n'+str(main_list[i])
+                requests.get(url1)
+                sleep(2)
 
-#                 #r = proxy.Proxy_Request(url=url2, request_type=request_type)
-#                 r = proxy.Proxy_Request(url=url1, request_type=request_type)
+                #         sleep(28)
 
-#         sleep(28)
-#         print('Refreshed')
-        
 
 
 

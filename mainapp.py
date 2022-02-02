@@ -60,6 +60,7 @@ while True:
 
         
     Count+=1
+    sleep(50)
     
     if Count==1:
         

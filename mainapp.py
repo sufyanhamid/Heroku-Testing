@@ -6,6 +6,78 @@ import pandas as pd
 # import random
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from pprint import pprint as pp
+import random
+
+
+
+class Random_Proxy(object):
+
+    def __init__(self):
+        self.__url = 'https://www.sslproxies.org/'
+        self.__headers = {
+            'Accept-Encoding': 'gzip, deflate, sdch',
+            'Accept-Language': 'en-US,en;q=0.8',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Referer': 'http://www.wikipedia.org/',
+            'Connection': 'keep-alive',
+            }
+        self.random_ip = []
+        self.random_port = []
+
+    def __random_proxy(self):
+
+        """
+        This is Private Function Client Should not have accesss
+        :return: Dictionary object of Random proxy and port number
+        """
+
+        r = requests.get(url=self.__url, headers=self.__headers)
+        soup = BeautifulSoup(r.text, 'html.parser')
+
+        # Get the Random IP Address
+        for x in soup.findAll('td')[::8]:
+            self.random_ip.append(x.get_text())
+
+        # Get Their Port
+        for y in soup.findAll('td')[1::8]:
+            self.random_port.append(y.get_text())
+
+        # Zip together
+        z = list(zip(self.random_ip, self.random_port))
+
+        # This will Fetch Random IP Address and corresponding PORT Number
+        number = random.randint(0, len(z)-50)
+        ip_random = z[number]
+
+        # convert Tuple into String and formart IP and PORT Address
+        ip_random_string = "{}:{}".format(ip_random[0],ip_random[1])
+
+        # Create a Proxy
+        proxy = {'https':ip_random_string}
+
+        # return Proxy
+        return proxy
+
+    def Proxy_Request(self,request_type='get',url='',**kwargs):
+        """
+
+        :param request_type: GET, POST, PUT
+        :param url: URL from which you want to do webscrapping
+        :param kwargs: any other parameter you pass
+        :return: Return Response
+        """
+        while True:
+            try:
+                proxy = self.__random_proxy()
+#                 print("Using Proxy {}".format(proxy))
+                r = requests.request(request_type,url,proxies=proxy,headers=self.__headers ,timeout=8, **kwargs)
+                return r
+                break
+            except:
+                pass
+
 
 
 scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
@@ -54,9 +126,7 @@ while True:
                 My_Sheet(0,Temp_List_1)
     #             Temp_File_1=pd.DataFrame(Temp_List_1).to_csv('./Desktop/New_List_1.csv',index=False)
                 for i in range(0, len(main_list_1)):
-            
-                    #print(main_list_1[i])
-                    pass
+                    print(main_list_1[i])
                     # proxy = Random_Proxy()
                     
                     # url1 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=Program 2 New Coin Arrived at Coin Gecko\n'+str(main_list_1[i])
@@ -97,8 +167,7 @@ while True:
             if main_list:
                 My_Sheet(1,Temp_List)
                 for i in range(0, len(main_list)):
-                    pass
-                    #print(main_list[i])
+                    print(main_list[i])
                     # proxy = Random_Proxy()
                     
                     # url2 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=Program 2 New Coin Arrived at Coin Gecko\n'+str(main_list[i])
@@ -118,8 +187,35 @@ while True:
             Loaded_List_3=list(records_df_3['list'])
             # print(Loaded_List_3)
             sheet_instance_3.update_acell('A'+str(len(Loaded_List_3)+2),'Refreshed')
-           
+            
+            print('Refreshed')
         
     except:
-        
+        print('phata')
         pass
+
+            
+
+# A=0
+# while A==0:
+#     A+=1
+#     Count=0
+#     if Count==0:
+
+#         URL_1='https://coinmarketcap.com/new/'
+#         webpage1 = requests.get(URL_1)
+#         soup1 = BeautifulSoup(webpage1.content, "html.parser")
+#         Coin_MarkerCap = etree.HTML(str(soup1))
+
+#         Temp_List_1=[]
+
+#         for i in range(0, 5):
+#             Temp_List_1.append((Coin_MarkerCap.xpath('//*[@id="__next"]//tbody/tr['+str(i+1)+']/td[3]/a[1]/div[1]/div[1]/p')[0].text).replace('\n',''))
+#             print(Temp_List_1[i])
+#             url1 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=Program 2 New Coin Arrived at Coin Gecko\n'+str(Temp_List_1[i])
+            
+#             request_type = "get"
+#             proxy = Random_Proxy()
+#             proxy.Proxy_Request(url=url1, request_type=request_type)
+
+#         # pd.DataFrame(Temp_List_1).to_csv('Tempp.csv')

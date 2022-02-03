@@ -1,1 +1,1 @@
-web: python mainapp.py
+web: python mainapp.py runserver

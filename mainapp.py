@@ -24,5 +24,5 @@ while True:
     # print(records_df_3)
     Loaded_List_3=list(records_df_3['list'])
     # print(Loaded_List_3)
-    sheet_instance_3.update_acell('A'+str(len(Loaded_List_3)+2),'Refreshed')
+    sheet_instance_3.update_acell('A'+str(len(Loaded_List_3)+2),'Refreshed lora mera')
     sleep(5)

@@ -5,9 +5,7 @@ from time import sleep
 import pandas as pd
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from pprint import pprint as pp
-
-
+from datetime import datetime
 
 
 scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
@@ -98,7 +96,8 @@ while True:
             a_3=sheet_instance_3.get_all_records()
             records_df_3 = pd.DataFrame.from_dict(a_3)
             Loaded_List_3=list(records_df_3['list'])
-            sheet_instance_3.update_acell('A'+str(len(Loaded_List_3)+2),'Refreshed')
+            sheet_instance_3.update_acell('A2'),datetime.today().strftime('%Y-%m-%d %I:%M:%S'))
+#             sheet_instance_3.update_acell('A'+str(len(Loaded_List_3)+2),datetime.today().strftime('%Y-%m-%d %I:%M:%S'))
             
     except:
         pass

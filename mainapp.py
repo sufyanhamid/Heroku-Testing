@@ -52,7 +52,7 @@ while True:
             if main_list_1:
                 My_Sheet(0,Temp_List_1)
                 for i in range(0, len(main_list_1)):
-                    url1 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=New Coin Arrived at Coin Gecko\n'+str(main_list_1[i])
+                    url1 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=New Coin Arrived at CoinMarketCap\n'+str(main_list_1[i])
                     requests.get(url1)
                     sleep(5)
                     #url2 = 'https://api.telegram.org/bot5239619966:AAGoZ1maO870KNAbgt9olsC53eVNF0gv_AU/sendMessage?chat_id=256007064&parse_mode=MarkdownV2&&text=New Coin Arrived at Coin Gecko\n'+str(main_list[i])
@@ -86,7 +86,7 @@ while True:
                 My_Sheet(1,Temp_List)
                 for i in range(0, len(main_list)):
                     
-                    url2 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=New Coin Arrived at Coin Gecko\n'+str(main_list[i])
+                    url2 = 'https://api.telegram.org/bot5179356592:AAFJQqOMJkMocIH0SU5J4GnmfhK6EE-_tno/sendMessage?chat_id=5050252731&parse_mode=MarkdownV2&&text=New Coin Arrived at CoinGecko\n'+str(main_list[i])
                     requests.get(url2)
                     sleep(5)
                     #url2 = 'https://api.telegram.org/bot5239619966:AAGoZ1maO870KNAbgt9olsC53eVNF0gv_AU/sendMessage?chat_id=256007064&parse_mode=MarkdownV2&&text=New Coin Arrived at Coin Gecko\n'+str(main_list[i])

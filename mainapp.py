@@ -41,7 +41,7 @@ while True:
             Temp_List_1=[]
             main_list_1=[]
             
-            for i in range(0, 10):
+            for i in range(0, 1):
                 Temp_List_1.append((Coin_MarkerCap.xpath('//*[@id="__next"]//tbody/tr['+str(i+1)+']/td[3]/a[1]/div[1]/div[1]/p')[0].text).replace('\n',''))
 
             sheet_1 = client.open("@BorisJohnson")
@@ -73,7 +73,7 @@ while True:
             Temp_List=[]
             main_list=[]
             
-            for i in range(0, 10):
+            for i in range(0, 1):
                 Temp_List.append((Coin_Gecko.xpath('/html/body/div[2]/div[5]/div[3]/div[2]/div/table/tbody/tr['+str(i+1)+']/td[3]/div/div[2]/div/a[1]')[0].text).replace('\n',''))    
             
             sheet = client.open("@BorisJohnson")

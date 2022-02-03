@@ -96,7 +96,7 @@ while True:
             a_3=sheet_instance_3.get_all_records()
             records_df_3 = pd.DataFrame.from_dict(a_3)
             Loaded_List_3=list(records_df_3['list'])
-            sheet_instance_3.update_acell('A2'),datetime.today().strftime('%Y-%m-%d %I:%M:%S'))
+            sheet_instance_3.update_acell('A2',datetime.today().strftime('%Y-%m-%d %I:%M:%S'))
 #             sheet_instance_3.update_acell('A'+str(len(Loaded_List_3)+2),datetime.today().strftime('%Y-%m-%d %I:%M:%S'))
             
     except:

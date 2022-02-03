@@ -17,12 +17,17 @@ creds = ServiceAccountCredentials.from_json_keyfile_name("sufyanpython-1f042e1fc
 client = gspread.authorize(creds)
 
 while True:
-    sheet_3 = client.open("@BorisJohnson")
-    sheet_instance_3 = sheet_3.get_worksheet(2)
-    a_3=sheet_instance_3.get_all_records()
-    records_df_3 = pd.DataFrame.from_dict(a_3)
-    # print(records_df_3)
-    Loaded_List_3=list(records_df_3['list'])
-    # print(Loaded_List_3)
-    sheet_instance_3.update_acell('A'+str(len(Loaded_List_3)+2),'Refreshed lora mera')
-    sleep(5)
+    
+    try:
+        sheet_3 = client.open("@BorisJohnson")
+        sheet_instance_3 = sheet_3.get_worksheet(2)
+        a_3=sheet_instance_3.get_all_records()
+        records_df_3 = pd.DataFrame.from_dict(a_3)
+        # print(records_df_3)
+        Loaded_List_3=list(records_df_3['list'])
+        # print(Loaded_List_3)
+        sheet_instance_3.update_acell('A'+str(len(Loaded_List_3)+2),'Refreshed lora mera')
+        sleep(5)
+     
+    except:
+        pass
